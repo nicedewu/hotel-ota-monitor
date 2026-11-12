@@ -1,0 +1,12 @@
+# Example schedule. Adjust for your deployment.
+[Unit]
+Description=Sync official event intelligence before business snapshots
+
+[Timer]
+OnCalendar=*-*-* 07:45:00
+Persistent=true
+AccuracySec=1min
+Unit=hotel-event-intelligence-sync.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,12 @@
+# Example schedule. Adjust for your deployment.
+[Unit]
+Description=Generate Hotel Weekly Review After Final Occupancy Capture
+
+[Timer]
+OnCalendar=Mon *-*-* 09:30:00
+Persistent=true
+AccuracySec=1min
+Unit=hotel-weekly-review.service
+
+[Install]
+WantedBy=timers.target

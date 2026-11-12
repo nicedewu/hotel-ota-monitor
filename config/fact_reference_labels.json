@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "fact_type_labels": {
+    "pricing": "价格事实",
+    "metrics": "经营指标事实",
+    "inventory": "房量事实",
+    "exhibition": "展会事实"
+  },
+  "hotel_key_labels": {
+    "competitor_demo_b": "示例竞品酒店 B",
+    "demo_competitor_b": "示例竞品酒店 B",
+    "competitor_demo_c": "示例竞品酒店 C",
+    "demo_competitor_c": "示例竞品酒店 C",
+    "competitor_demo_d": "示例竞品酒店 D",
+    "demo_competitor_d": "示例竞品酒店 D",
+    "competitor_demo_e": "示例竞品酒店 E",
+    "demo_competitor_e": "示例竞品酒店 E",
+    "competitor_demo_a": "示例竞品酒店 A",
+    "demo_competitor_a": "示例竞品酒店 A",
+    "own_demo_b": "示例自营酒店 B",
+    "demo_own_b": "示例自营酒店 B",
+    "own_demo_c": "示例自营酒店 C",
+    "demo_own_c": "示例自营酒店 C",
+    "own_demo_d": "示例自营酒店 D",
+    "demo_own_d": "示例自营酒店 D",
+    "own_demo_a": "示例自营酒店 A",
+    "own_demo_e": "示例自营酒店 E",
+    "demo_own_e": "示例自营酒店 E"
+  },
+  "room_type_labels": {
+    "bathtub_double": "浴缸电竞大床房",
+    "esports_double": "电竞大床房",
+    "esports_hexa": "电竞六人间",
+    "esports_penta": "电竞五人间",
+    "esports_quad": "电竞四人间",
+    "esports_single": "电竞单人间",
+    "esports_triple": "电竞三人间",
+    "esports_twin": "电竞双床房",
+    "king_double": "电竞特大床房"
+  }
+}

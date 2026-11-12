@@ -1,0 +1,13 @@
+[Unit]
+Description=Hotel Business Snapshot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=ctrip-monitor
+WorkingDirectory=/opt/hotel-ota-monitor
+TimeoutStartSec=35min
+EnvironmentFile=/var/lib/ctrip-monitor/.hotel_agent/db.env
+EnvironmentFile=/var/lib/ctrip-monitor/.hotel_agent/webhook.env
+ExecStart=/opt/hotel-ota-monitor/scripts/run_multi_hotel_business_snapshot.sh

@@ -1,0 +1,14 @@
+[Unit]
+Description=Generate governed weekly-review candidate drafts
+After=network-online.target hotel-weekly-review.service
+Wants=network-online.target
+
+[Service]
+User=ctrip-monitor
+Group=ubuntu
+Type=oneshot
+WorkingDirectory=/opt/hotel-ota-monitor
+EnvironmentFile=/var/lib/ctrip-monitor/.hotel_agent/db.env
+EnvironmentFile=/var/lib/ctrip-monitor/.hotel_agent/webhook.env
+ExecStart=/usr/bin/flock -n /tmp/hotel-weekly-review-candidates.lock /opt/hotel-ota-monitor/.venv/bin/python /opt/hotel-ota-monitor/scripts/weekly_review_candidates.py generate --auto-last-week --hotel-key all --write --notify
+TimeoutStartSec=10min

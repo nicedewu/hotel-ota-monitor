@@ -1,0 +1,70 @@
+{
+  "enabled": true,
+  "provider": "qwen_native",
+  "include_active_hotel_context": true,
+  "horizon_days": 90,
+  "window_days": 30,
+  "results_per_query": 8,
+  "max_attempts": 5,
+  "max_full_queries": 20,
+  "priority_window_days": 14,
+  "max_reverse_queries": 6,
+  "max_reverse_anomalies": 3,
+  "max_trusted_page_verifications": 8,
+  "corroboration_min_domains": 2,
+  "max_verification_queries": 5,
+  "verification_pages_per_event": 8,
+  "verification_venue_aliases": {
+    "上海浦发银行东方体育中心": ["东方体育中心", "浦发银行东方体育中心"],
+    "浦发银行东方体育中心": ["东方体育中心"],
+    "静安体育中心": ["Jing'an Sports Center", "Jingan Sports Center"],
+    "梅赛德斯-奔驰文化中心": ["梅奔", "Mercedes-Benz Arena", "Mercedes Benz Arena"]
+  },
+  "shanghai_government_search": {
+    "enabled": true,
+    "endpoint": "https://search.sh.gov.cn/searchResult",
+    "page_size": 20,
+    "results_per_event": 5,
+    "timeout_seconds": 15
+  },
+  "qwen": {
+    "model": "qwen3.8-flash",
+    "api_base": "https://dashscope.aliyuncs.com/api/v1",
+    "api_key_env": "DASHSCOPE_API_KEY",
+    "search_strategy": "turbo",
+    "full_search_strategy": "max",
+    "incremental_search_strategy": "turbo",
+    "fallback_search_strategy": "max",
+    "min_sources_before_max": 3,
+    "max_tokens": 4096,
+    "timeout_seconds": 90,
+    "max_retries": 1
+  },
+  "query_groups": [
+    {"category": "esports", "terms": "线下电竞赛事 游戏职业联赛 总决赛 游戏线下嘉年华 官方赛程 场馆"},
+    {"category": "sports", "terms": "大型国际体育赛事 职业赛事 全国决赛 公开赛 官方赛程 场馆"},
+    {"category": "performance", "terms": "大型演唱会 音乐节 巡演 官方票务 场馆 日程"},
+    {"category": "acg", "terms": "线下动漫展 游戏展 同人展 官方公告 举办日期 场馆"},
+    {"category": "exhibition", "terms": "大型专业展会 国际博览会 行业大会 官方日程 场馆"}
+  ],
+  "priority_query_groups": [
+    {"category": "esports", "terms": "大型线下电竞职业联赛 总决赛 年度盛典 全球赛 全国赛 场馆 票务"},
+    {"category": "sports", "terms": "大型线下国际体育赛事 全国决赛 职业赛事 公开赛 场馆 票务"},
+    {"category": "performance", "terms": "大型线下演唱会 音乐节 万人场 巡演终场 场馆 票务"},
+    {"category": "acg", "terms": "大型线下动漫展 游戏展 同人展 手办展 场馆 票务"},
+    {"category": "exhibition", "terms": "国家级展会 国际博览会 大型专业展 行业大会 场馆 日程"}
+  ],
+  "trusted_source_domains": {
+    "neccsh.com": "official",
+    "sniec.net": "official",
+    "expo.sww.sh.gov.cn": "authoritative",
+    "lolesports.com": "official",
+    "riotgames.com": "official",
+    "valorantesports.com": "official",
+    "shanghai.gov.cn": "authoritative",
+    "sh.gov.cn": "authoritative",
+    "jingan.gov.cn": "authoritative",
+    "wanmei.com": "official",
+    "dota2.com": "official"
+  }
+}

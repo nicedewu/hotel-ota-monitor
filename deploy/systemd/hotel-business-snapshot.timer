@@ -1,0 +1,13 @@
+# Example schedule. Adjust for your deployment.
+[Unit]
+Description=Run Hotel Morning, Afternoon and Evening Business Snapshots
+
+[Timer]
+OnCalendar=*-*-* 10:00:00
+OnCalendar=*-*-* 14:30:00
+OnCalendar=*-*-* 18:30:00
+Persistent=false
+Unit=hotel-business-snapshot.service
+
+[Install]
+WantedBy=timers.target

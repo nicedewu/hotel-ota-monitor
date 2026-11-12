@@ -1,0 +1,11 @@
+# Example schedule. Adjust for your deployment.
+[Unit]
+Description=Weekly Qwen-native discovery of future Shanghai events
+
+[Timer]
+OnCalendar=Sun *-*-* 08:30:00
+Persistent=true
+Unit=hotel-event-forward-discovery.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,11 @@
+# Example schedule. Adjust for your deployment.
+[Unit]
+Description=Generate weekly-review candidate drafts after weekly reports
+
+[Timer]
+OnCalendar=Tue *-*-* 10:30:00
+Persistent=true
+Unit=hotel-weekly-review-candidates.service
+
+[Install]
+WantedBy=timers.target

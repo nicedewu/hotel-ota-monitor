@@ -1,0 +1,14 @@
+[Unit]
+Description=Send deduplicated future high-relevance event alerts
+After=network-online.target hotel-event-forward-discovery.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=ctrip-monitor
+WorkingDirectory=/opt/hotel-ota-monitor
+TimeoutStartSec=5min
+Environment=TZ=Asia/Shanghai
+EnvironmentFile=/var/lib/ctrip-monitor/.hotel_agent/db.env
+EnvironmentFile=/var/lib/ctrip-monitor/.hotel_agent/webhook.env
+ExecStart=/usr/bin/flock -n /tmp/hotel-future-event-alert.lock /opt/hotel-ota-monitor/.venv/bin/python /opt/hotel-ota-monitor/main.py future-event-alert --days 30 --push

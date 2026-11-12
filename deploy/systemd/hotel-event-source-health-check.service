@@ -1,0 +1,13 @@
+[Unit]
+Description=Check critical official event-source health
+After=network-online.target hotel-event-intelligence-sync.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=ctrip-monitor
+WorkingDirectory=/opt/hotel-ota-monitor
+TimeoutStartSec=1min
+Environment=TZ=Asia/Shanghai
+EnvironmentFile=/var/lib/ctrip-monitor/.hotel_agent/db.env
+ExecStart=/opt/hotel-ota-monitor/.venv/bin/python /opt/hotel-ota-monitor/main.py event-source-health-check

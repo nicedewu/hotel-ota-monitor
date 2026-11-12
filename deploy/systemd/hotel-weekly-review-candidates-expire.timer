@@ -1,0 +1,12 @@
+# Example schedule. Adjust for your deployment.
+[Unit]
+Description=Expire unprocessed weekly-review candidates after 24 hours
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+AccuracySec=1min
+Unit=hotel-weekly-review-candidates-expire.service
+
+[Install]
+WantedBy=timers.target

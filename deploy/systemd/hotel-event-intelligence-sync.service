@@ -1,0 +1,14 @@
+[Unit]
+Description=Sync official event sources into the hotel candidate event store
+After=network-online.target
+Wants=network-online.target
+OnSuccess=hotel-event-source-health-check.service hotel-demand-anomaly-evaluate.service
+
+[Service]
+Type=oneshot
+User=ctrip-monitor
+WorkingDirectory=/opt/hotel-ota-monitor
+TimeoutStartSec=5min
+Environment=TZ=Asia/Shanghai
+EnvironmentFile=/var/lib/ctrip-monitor/.hotel_agent/db.env
+ExecStart=/usr/bin/flock -n /tmp/hotel-event-intelligence-sync.lock /opt/hotel-ota-monitor/.venv/bin/python /opt/hotel-ota-monitor/main.py event-intelligence-sync --config config/event_intelligence_sources.json

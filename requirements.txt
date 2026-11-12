@@ -1,0 +1,5 @@
+playwright
+python-dotenv
+psycopg[binary]
+loguru
+mnemosyne-memory==3.11.1

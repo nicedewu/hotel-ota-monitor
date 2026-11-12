@@ -1,0 +1,13 @@
+[Unit]
+Description=Expire overdue weekly-review candidate drafts
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=ctrip-monitor
+Group=ubuntu
+Type=oneshot
+WorkingDirectory=/opt/hotel-ota-monitor
+EnvironmentFile=/var/lib/ctrip-monitor/.hotel_agent/db.env
+ExecStart=/usr/bin/flock -n /tmp/hotel-weekly-review-candidates-expire.lock /opt/hotel-ota-monitor/.venv/bin/python /opt/hotel-ota-monitor/scripts/weekly_review_candidates.py expire-overdue --limit 500
+TimeoutStartSec=5min

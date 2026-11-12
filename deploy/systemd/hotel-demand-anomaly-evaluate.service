@@ -1,0 +1,14 @@
+[Unit]
+Description=Aggregate multi-hotel future-demand anomalies and event attributions
+After=network-online.target hotel-future-demand-scan.service
+Wants=network-online.target
+OnSuccess=hotel-event-reverse-discovery.service
+
+[Service]
+Type=oneshot
+User=ctrip-monitor
+WorkingDirectory=/opt/hotel-ota-monitor
+TimeoutStartSec=5min
+Environment=TZ=Asia/Shanghai
+EnvironmentFile=/var/lib/ctrip-monitor/.hotel_agent/db.env
+ExecStart=/usr/bin/flock -n /tmp/hotel-demand-anomaly-evaluate.lock /opt/hotel-ota-monitor/.venv/bin/python /opt/hotel-ota-monitor/main.py demand-anomaly-evaluate --days 30 --no-dry-run

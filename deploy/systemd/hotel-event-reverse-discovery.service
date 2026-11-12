@@ -1,0 +1,14 @@
+[Unit]
+Description=Discover demand-anomaly event causes through Qwen native web search
+After=network-online.target hotel-demand-anomaly-evaluate.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=ctrip-monitor
+WorkingDirectory=/opt/hotel-ota-monitor
+TimeoutStartSec=10min
+Environment=TZ=Asia/Shanghai
+EnvironmentFile=/var/lib/ctrip-monitor/.hotel_agent/db.env
+EnvironmentFile=/var/lib/ctrip-monitor/.hotel_agent/qwen-search.env
+ExecStart=/usr/bin/flock -w 300 /tmp/hotel-event-refresh.lock /opt/hotel-ota-monitor/.venv/bin/python /opt/hotel-ota-monitor/main.py event-reverse-discovery

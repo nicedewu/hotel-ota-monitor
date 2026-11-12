@@ -1,0 +1,14 @@
+# Example schedule. Adjust for your deployment.
+[Unit]
+Description=Refresh targeted future-demand signals before business snapshots
+
+[Timer]
+OnCalendar=*-*-* 09:30:00
+OnCalendar=*-*-* 13:30:00
+OnCalendar=*-*-* 17:30:00
+Persistent=true
+AccuracySec=2min
+Unit=hotel-event-demand-watch.service
+
+[Install]
+WantedBy=timers.target

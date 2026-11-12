@@ -1,0 +1,22 @@
+{
+  "own_hotels": [
+    {
+      "key": "own_demo_a",
+      "name": "示例自营酒店 A",
+      "role": "own",
+      "ota_url": "https://example.invalid/own-hotel",
+      "competitors": [
+        "competitor_demo_a"
+      ],
+      "feishu_webhook_env_key": "FEISHU_WEBHOOK"
+    }
+  ],
+  "competitor_hotels": [
+    {
+      "key": "competitor_demo_a",
+      "name": "示例竞品酒店 A",
+      "role": "competitor",
+      "ota_url": "https://example.invalid/competitor-hotel"
+    }
+  ]
+}

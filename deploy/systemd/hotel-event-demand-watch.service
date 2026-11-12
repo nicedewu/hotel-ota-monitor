@@ -1,0 +1,11 @@
+[Unit]
+Description=Targeted demand watch for newly relevant future events
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=ctrip-monitor
+WorkingDirectory=/opt/hotel-ota-monitor
+TimeoutStartSec=30min
+EnvironmentFile=/var/lib/ctrip-monitor/.hotel_agent/db.env
+ExecStart=/usr/bin/flock -n /tmp/hotel-event-demand-watch.lock /opt/hotel-ota-monitor/.venv/bin/python -c "from datetime import date; from src.event_demand_watch import run_event_demand_watch; run_event_demand_watch(anchor_date=date.today())"

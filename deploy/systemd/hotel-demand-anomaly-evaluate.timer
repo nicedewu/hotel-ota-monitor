@@ -1,0 +1,12 @@
+# Example schedule. Adjust for your deployment.
+[Unit]
+Description=Evaluate future-demand anomalies after low-frequency inventory scan
+
+[Timer]
+OnCalendar=*-*-* 07:30:00
+Persistent=true
+AccuracySec=5min
+Unit=hotel-demand-anomaly-evaluate.service
+
+[Install]
+WantedBy=timers.target

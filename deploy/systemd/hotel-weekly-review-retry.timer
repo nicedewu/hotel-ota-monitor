@@ -1,0 +1,12 @@
+# Example schedule. Adjust for your deployment.
+[Unit]
+Description=Retry Failed Hotel Weekly Reviews Monday
+
+[Timer]
+OnCalendar=Mon *-*-* 13:30:00
+Persistent=true
+AccuracySec=1min
+Unit=hotel-weekly-review-retry.service
+
+[Install]
+WantedBy=timers.target
